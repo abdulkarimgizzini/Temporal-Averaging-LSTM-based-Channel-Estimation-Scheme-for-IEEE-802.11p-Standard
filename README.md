@@ -1,5 +1,5 @@
 
-This project includes the source code of the LSTM-based channel estimators proposed in "Temporal Averaging LSTM-based Channel Estimation Scheme for IEEE 802.11 p Standard" paper that is published in the proceedings of the IEEE GLOBECOM 2022 conference that was held in Madrid (Spain). Please note that the Tx-Rx OFDM processing is implemented in Matlab (Matlab_Codes) and the LSTM processing is implemented in python (PyTorch) (Python_Codes).
+This repository includes the source code of the LSTM-based channel estimators proposed in "Temporal Averaging LSTM-based Channel Estimation Scheme for IEEE 802.11 p Standard" paper that is published in the proceedings of the IEEE GLOBECOM 2022 conference that was held in Madrid (Spain). Please note that the Tx-Rx OFDM processing is implemented in Matlab (Matlab_Codes) and the LSTM processing is implemented in python (PyTorch) (Python_Codes).
 
 
 ### Matlab_Codes
