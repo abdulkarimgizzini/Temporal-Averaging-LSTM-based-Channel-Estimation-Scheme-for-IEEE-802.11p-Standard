@@ -13,24 +13,18 @@ This repository includes the source code of the LSTM-based channel estimators pr
 
 5. LSTM_MLP_RP.m: After exeuting the LSTM processing using PyTorch, this script is used to process the LSTM results and calculate the BER and NMSE for each LSTM-based estimator.
 
-6. DPA.m: Implement the conventional DPA estimation.
+6. DPA_TA.m: Impelement the convcentional DPA + Time averaging estimation.
 
-7. DPA_TA.m: Impelement the convcentional DPA + Time averaging estimation.
+7. Channel_functions.m: Define the several vehicular channel models (see the paper for detalied information).
 
-8. Channel_functions.m: Define the several vehicular channel models (see the paper for detalied information).
-
-9. IDX_Generation.m: Generate the training and testing indices vectors. Here you just need to specify the data set size, training and testing datsets percentages.
+8. IDX_Generation.m: Generate the training and testing indices vectors. Here you just need to specify the data set size, training and testing datsets percentages.
 
 ### Python_Codes 
 
-1. LSTM_DNN_DPA_Training.py: Train the LSTM-DNN-DPA estimator using H_DPA as an input and the corresponding true channels as an output.
+1. LSTM_DPA_TA_Training.py: Train the LSTM-DPA-TA estimator using H_DPA_TA as an input and the corresponding true channels as an output.
 
-2. LSTM_DPA_TA_Training.py: Train the LSTM-DPA-TA estimator using H_DPA_TA as an input and the corresponding true channels as an output.
+2. LSTM_DPA_TA_Testing.py: Test the LSTM-DPA-TA estimator using the trained LSTM model in (2).  
 
-3. LSTM_DNN_DPA_Testing.py: Test the LSTM-DNN-DPA estimator using the trained LSTM-DNN model in (1).  
-
-4. LSTM_DPA_TA_Testing.py: Test the LSTM-DPA-TA estimator using the trained LSTM model in (2).  
-
-5. functions.py: Implement the modulation/demodulation operations in python. 
+3. functions.py: Implement the modulation/demodulation operations in python. 
 
 For more information and questions, please contact me on abdulkarim.gizzini@ensea.fr
