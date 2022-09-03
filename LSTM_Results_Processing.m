@@ -44,7 +44,7 @@ for n_snr = 1:N_SNR
      
      scheme_LSTM = eval([scheme,'_corrected_y_',num2str(EbN0dB(n_snr))]);
      scheme_LSTM = permute(scheme_LSTM,[3 2 1]);
-     True_Channels_Structure = True_Channels_Structure(:,2:end,:);
+     True_Channels_Structure = True_Channels_Structure(:,2:end,:); 
      for u = 1:size(scheme_LSTM,3)
  
         H_scheme_LSTM = scheme_LSTM(:,:,u);
