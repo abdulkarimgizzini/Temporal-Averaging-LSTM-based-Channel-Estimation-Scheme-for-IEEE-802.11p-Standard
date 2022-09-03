@@ -30,7 +30,7 @@ function H = DummyChannel(gain, NR)
         H = repmat(gain, 1, NR).*GenRandomNoise([L, NR], 1);
     end
 function v = GenRandomNoise(siz, N0)
-v = sqrt(N0/2) * (randn(siz)+1j*randn(siz));
+v = sqrt(N0/2) * (randn(siz)+1j*randn(siz)); 
 end
 function s = UpdateSeed(rchan)
 release(rchan);
