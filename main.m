@@ -122,7 +122,7 @@ for n_snr = 1:N_SNR
         % Interleaving
         % Matrix Interleaving
         codedata = dataEnc.';
-        Matrix_Interleaved_Data = matintrlv(codedata,Interleaver_Rows,Interleaver_Columns).';
+        Matrix_Interleaved_Data = matintrlv(codedata,Interleaver_Rows,Interleaver_Columns).'; 
         % General Block Interleaving
         General_Block_Interleaved_Data = intrlv(Matrix_Interleaved_Data,Random_permutation_Vector);
         % Bits Mapping: M-QAM Modulation
