@@ -45,7 +45,7 @@ for i = 1:nSym
         Initial_Channel_Estimate = y_r(Kset,i)./ De_Equalized_OFDM_Symbol;
        
         % Step 4: Time domain Averging
-        H_DPA_TA(:,i) = (1 - (1/2)) .*  H_DPA_TA(:,i-1) + (1/2).* Initial_Channel_Estimate;
+        H_DPA_TA(:,i) = (1 - (1/2)) .*  H_DPA_TA(:,i-1) + (1/2).* Initial_Channel_Estimate; 
         
     end
 end
