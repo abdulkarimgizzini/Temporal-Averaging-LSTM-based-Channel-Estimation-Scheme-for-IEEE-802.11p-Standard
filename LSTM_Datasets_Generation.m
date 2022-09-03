@@ -76,7 +76,7 @@ elseif(isequal(configuration,'testing'))
     Received_Symbols_FFT_Structure = permute(Received_Symbols_FFT_Structure,[3 2 1]);
     LSTM_Datasets.('Test_X') =  Dataset_X;
     LSTM_Datasets.('Test_Y') =  Dataset_Y;  
-    LSTM_Datasets.('Y_DataSubCarriers') =  Received_Symbols_FFT_Structure;
+    LSTM_Datasets.('Y_DataSubCarriers') =  Received_Symbols_FFT_Structure; 
 end
 
 save(['./',mobility,'_',ChType,'_',modu,'_',scheme,'_LSTM_',configuration,'_dataset_' num2str(EbN0dB(n_snr)),'.mat'],  'LSTM_Datasets');
