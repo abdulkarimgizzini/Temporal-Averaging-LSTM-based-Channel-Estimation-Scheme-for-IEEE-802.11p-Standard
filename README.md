@@ -1,30 +1,33 @@
 
-This repository includes the source code of the LSTM-based channel estimators proposed in "Temporal Averaging LSTM-based Channel Estimation Scheme for IEEE 802.11 p Standard" paper that is published in the proceedings of the IEEE GLOBECOM 2022 conference that was held in Madrid (Spain). Please note that the Tx-Rx OFDM processing is implemented in Matlab (Matlab_Codes) and the LSTM processing is implemented in python (PyTorch) (Python_Codes).
+This repository includes the source code of the LSTM-based channel estimators proposed in "Temporal Averaging LSTM-based Channel Estimation Scheme for IEEE 802.11 p Standard" paper [1] that is published in the proceedings of the IEEE GLOBECOM 2022 conference that was held in Madrid (Spain). Please note that the Tx-Rx OFDM processing is implemented in Matlab and the LSTM processing is implemented in python (PyTorch).
 
 
-### Matlab_Codes
-1. Main_Simulation_Training.m: Run the Tx-Rx OFDM using a specific vehicular channel model, training SNR, and modulation order. In this file DPA and DPA_TA conventional channel estimators are implemented and saved to be used in the LSTM processing later (see the paper for detalied information). In order to save processing time, this file will run the simulation for Training_Size iterations only (Forexample if we are using 10000 channel realizations, instead of runnig the simulations for 10000 channel realization for each SNR, we just use here Training_Size = 8000). Moreover, we just save H_DPA, H_DPA_TA and the true channels. (No need to save the received frames and the Tx-bits here).
+### Files Description 
+- Main.m: The main simulation file, where the simulation parameters (Channel model, OFDM parameters, Modulation scheme, etc...) are defined. 
+- Channel_functions.m: Includes the pre-defined vehicular channel models [3] for different mobility conditions.
+- DPA_TA.m: Includes the implementation of the data-pilot aided (DPA) channel estimation followed by temporal averaging (TA).
+- LSTM_Datasets_Generation.m: Generating the LSTM training/testing datasets.
+- LSTM_Results_Processing.m: Processing the testing results genertead by the LSTM testing and caculate the BER and NMSE results of the LSTM-DPA-TA estimator.
+- LSTM.py: The LSTM training/testing is performed employing the generated training/testing datasets. The file should be executed twice as follows:
+	- **Step1: Training by executing this command python LSTM.py  Mobility Channel_Model Modulation_Order Channel_Estimator Training_SNR LSTM_Input LSTM_Cell_Size Epochs Batch_size**
+	- **Step2: Testing by executing this command: python LSTM.py  Mobility Channel_Model Modulation_Scheme Channel_Estimator Testing_SNR** 
+> ex: python LSTM.py  High VTV_SDWW QPSK DPA_TA 40 104 128 500 128
 
-2. Main_Simulation_Testing.m: Run the Tx-Rx OFDM similarly as performed in (1) but here for Testing_Size iterations and for the whole SNR region and not for the training SNR only as considered in (1). You will notice here that we save all the simulation parameters including the received frames and the Tx-bits, in order to use them later in the LSTM results processing.
+> ex: python LSTM.py High VTV_SDWW QPSK DPA_TA 40
+		
+### Running Steps:
+1. Run the IDX_Generation.m in order to genertae the dataset indices, training dataset size, and testing dataset size.
+2. Run the main.m file two times as follows:
+	- Specify all the simulation parameters like: the number of OFDM symbols, channel model, mobility scenario, modulatio order, SNR range, etc.
+	- Specify the path of the generated indices in step (1).
+	- The first time for generating the traininig simulation file (set the configuration = 'training' in the code).
+	- The second time for generating the testing simulations files (set the configuration = 'testing' in the code).
+	- After that, the generated simulations files will be saved in your working directory.
+3. Run the LSTM_Datasets_Generation.m also two times by changing the configuration as done in step (2) in addition to specifying the channel estimation scheme as well as the OFDM simulation parameters. This step generates the LSTM training/testing datasets.
+4. Run the LSTM.py file also two times in order to perform the training first then the testing as mentioned in the LSTM.py file description.
+5. After finishing step 4, the LSTM results will be saved as a .mat files. Then you need to run the LSTM_Results_Processing.m file in order to get the NMSE and BER results of the studied channel estimation scheme.
 
-3. DG_LSTM_MLP_Training.m: This script will generte the training dataset obtained by (1). 
+### References
+- [1] A. K. Gizzini, M. Chafii, S. Ehsanfar and R. M. Shubair, "Temporal Averaging LSTM-based Channel Estimation Scheme for IEEE 802.11p Standard," 2021 IEEE Global Communications Conference (GLOBECOM), 2021, pp. 01-07, doi: 10.1109/GLOBECOM46510.2021.9685409.
 
-4. DG_LSTM_MLP_Testing.m: This script will generte the testing dataset obtained by (2).
-
-5. LSTM_MLP_RP.m: After exeuting the LSTM processing using PyTorch, this script is used to process the LSTM results and calculate the BER and NMSE for each LSTM-based estimator.
-
-6. DPA_TA.m: Impelement the convcentional DPA + Time averaging estimation.
-
-7. Channel_functions.m: Define the several vehicular channel models (see the paper for detalied information).
-
-8. IDX_Generation.m: Generate the training and testing indices vectors. Here you just need to specify the data set size, training and testing datsets percentages.
-
-### Python_Codes 
-
-1. LSTM_DPA_TA_Training.py: Train the LSTM-DPA-TA estimator using H_DPA_TA as an input and the corresponding true channels as an output.
-
-2. LSTM_DPA_TA_Testing.py: Test the LSTM-DPA-TA estimator using the trained LSTM model in (2).  
-
-3. functions.py: Implement the modulation/demodulation operations in python. 
-
-For more information and questions, please contact me on abdulkarim.gizzini@ensea.fr
+For more information and questions, please contact me on abdulkarim.gizzini@ensea.fr 
