@@ -65,7 +65,7 @@ if configuration_mode == 10:
     # We are running the training phase
     mobility = sys.argv[1]
     channel_model = sys.argv[2]
-    modulation_order = sys.argv[3]
+    modulation_order = sys.argv[3] 
     scheme = sys.argv[4]
     training_snr = sys.argv[5]
     input_size = sys.argv[6]
