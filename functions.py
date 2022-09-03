@@ -4,7 +4,7 @@ import math
 import numpy as np
 
 
-def map(signal_bit, modu_way):
+def map(signal_bit, modu_way): 
     '''
     :param signal_bit: the bit signal ,shape = (ofdm_sym_num, data_sub_num*bit_to_sym[modu_way])
     :param modu_way:  0:bpsk, 1:qpsk, 2:16qam, 3:64qam
