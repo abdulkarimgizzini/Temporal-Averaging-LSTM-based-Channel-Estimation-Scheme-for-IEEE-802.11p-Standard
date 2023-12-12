@@ -30,4 +30,4 @@ This repository includes the source code of the LSTM-based channel estimators pr
 ### References
 - [1] A. K. Gizzini, M. Chafii, S. Ehsanfar and R. M. Shubair, "Temporal Averaging LSTM-based Channel Estimation Scheme for IEEE 802.11p Standard," 2021 IEEE Global Communications Conference (GLOBECOM), 2021, pp. 01-07, doi: 10.1109/GLOBECOM46510.2021.9685409.
 
-For more information and questions, please contact me on abdulkarim.gizzini@ensea.fr 
+For more information and questions, please contact me on abdulkarimgizzini@gmail.com
