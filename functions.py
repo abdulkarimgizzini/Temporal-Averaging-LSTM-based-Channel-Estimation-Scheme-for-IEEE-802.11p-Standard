@@ -280,21 +280,22 @@ def sta_dnn(hf_p_ls, yf_d, d_index, modu_way, v_index, c_index):
             hf[c_index] = hf_p_ls[i, j + 2, c_index]
             for k in range(yf_d.shape[2]):
                 a, b = 0, 0
-                for m in range(-2, 3, 1):  # 由于边界和空符号的影响需要分段考虑
+                for m in range(-2, 3, 1):  
                     if k + m >= 6 and k + m < 59 and k + m != 32:
                         a = a + hf[k + m]
-                        b = b + 1  # 计数符号，计加了几次
+                        b = b + 1  
                 if b != 0:
                     hf_update[k] = a / b
             hf = 1 / 2 * hf_update + 1 / 2 * hf
             input = np.concatenate((hf[v_index].real, hf[v_index].imag), axis=0)
-            # ----------------实例化------------------#
+            
             input1 = scaler.fit_transform(input.reshape(-1, 2)).reshape(input.shape)
             input2 = torch.from_numpy(input1).type(torch.FloatTensor)
             _, output = NET4(input2.to(device))
             out = scaler.inverse_transform(output.detach().cpu().numpy().reshape(-1, 2)).reshape(output.shape)
             hf[d_index] = out[:48] + 1j * out[48:]
     return hf_sta_dnn
+
 
 
 
